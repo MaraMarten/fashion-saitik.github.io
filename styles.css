@@ -1,0 +1,533 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;500;700&display=swap');
+
+/* БАЗОВЫЕ НАСТРОЙКИ ДЛЯ МОБИЛЬНЫХ */
+* {
+  -webkit-text-size-adjust: 100%; /* Запрет увеличения текста на iOS */
+  text-size-adjust: 100%;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  min-width: 320px; /* Минимальная ширина */
+  word-wrap: break-word;
+}
+
+/* Фикс для viewport на iOS */
+@viewport {
+  width: device-width;
+  zoom: 1;
+}
+
+/* ===== ГЛОБАЛЬНЫЕ СТИЛИ ===== */
+:root {
+  --primary: #4e0714;
+  --secondary: #781727;
+  --accent: #9e182b;
+  --light: #f9dac3;
+  --dark: #40343c;
+  --max-width: 1200px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  line-height: 1.6;
+  background-color: var(--light);
+  color: var(--dark);
+}
+
+/* ===== ТИПОГРАФИЯ ===== */
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', serif;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--light);
+}
+
+h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 1.5rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--accent);
+  width: 100%;
+}
+
+h3 {
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin: 1.2rem 0;
+}
+
+p {
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+  font-size: 1.1rem;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: var(--secondary);
+}
+
+/* ===== ШАПКА И НАВИГАЦИЯ ===== */
+header {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: var(--light);
+  padding: 1.5rem 0;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== НАВИГАЦИОННОЕ МЕНЮ ===== */
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 1rem 0;
+  flex-wrap: wrap;
+}
+
+nav li {
+  margin: 0 0.5rem;
+}
+
+nav a {
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  font-weight: 500;
+  color: white; /* Исходный цвет текста */
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Градиентный фон при наведении */
+nav a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(158, 24, 43, 0.8), rgba(120, 23, 39, 0.9));
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+nav a:hover {
+  color: white !important; /* Всегда белый текст при наведении */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(120, 23, 39, 0.3);
+}
+
+nav a:hover::before {
+  opacity: 1;
+}
+
+nav a:active {
+  transform: translateY(0);
+}
+/* ===== ОСНОВНОЕ СОДЕРЖИМОЕ ===== */
+main {
+  flex: 1;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+}
+
+article {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+section {
+  margin-bottom: 2.5rem;
+}
+
+/* ===== СТИЛИ ДЛЯ ГЛАВНОЙ СТРАНИЦЫ ===== */
+.welcome {
+  text-align: left;
+}
+
+/* ===== СТИЛИ ДЛЯ БИОГРАФИИ ===== */
+.biography {
+  width: 100%;
+}
+
+.hobbies-list {
+  list-style-type: none;
+  padding-left: 1.5rem;
+}
+
+.hobbies-list li {
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.hobbies-list li::before {
+  content: "•";
+  color: var(--accent);
+  position: absolute;
+  left: -1rem;
+}
+
+/* Стили для растягивания контента на всю ширину */
+.full-width-content {
+  width: 100%;
+  max-width: 100%;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+}
+/* Стили для списка увлечений */
+.hobbies-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+.hobbies-list li {
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+.hobbies-list li:before {
+  content: "•";
+  color: #781727;
+  position: absolute;
+  left: 0;
+}
+/* ===== СТИЛИ ДЛЯ КОНТАКТОВ ===== */
+.contact-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.contact-table caption {
+  font-weight: 500;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.contact-table th, 
+.contact-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.contact-table th {
+  background-color: var(--primary);
+  color: white;
+  font-weight: 500;
+}
+
+.contact-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* ===== ПОДВАЛ ===== */
+footer {
+  background: linear-gradient(to right, var(--primary), var(--secondary), var(--primary));
+  color: white;
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: auto;
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+@media (max-width: 1024px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+  }
+  
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  nav li {
+    margin: 0.3rem 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .gallery figure {
+    aspect-ratio: 3/2;
+  }
+  
+  main {
+    padding: 0 1rem;
+  }
+}
+
+.content-align {
+  width: 100%;
+  max-width: 100%;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+}
+
+/* КОНТАКТЫ - МОБИЛЬНАЯ АДАПТАЦИЯ */
+.contact-section {
+  width: 100%;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.contact-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin: 15px 0;
+  overflow-x: auto;
+  display: block; /* Для горизонтального скролла на маленьких экранах */
+}
+
+.contact-table th,
+.contact-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  min-width: 120px; /* Минимальная ширина ячеек */
+}
+
+.contact-table th {
+  background-color: #781727;
+  color: white;
+  position: sticky;
+  top: 0;
+}
+
+.contact-table a {
+  color: #781727;
+  word-break: break-all; /* Перенос длинных ссылок */
+}
+
+/* Улучшение для очень узких экранов */
+@media (max-width: 360px) {
+  .contact-table th,
+  .contact-table td {
+      padding: 8px 5px;
+      font-size: 13px;
+  }
+}
+
+/* Планшеты (от 600px) */
+@media (min-width: 600px) {
+  .contact-section {
+      padding: 0 15px;
+  }
+  
+  .contact-table {
+      font-size: 15px;
+      display: table; /* Возвращаем стандартное поведение таблицы */
+  }
+}
+
+/* Десктопы (от 900px) */
+@media (min-width: 900px) {
+  .contact-table {
+      font-size: 16px;
+  }
+  
+  .contact-table th,
+  .contact-table td {
+      padding: 12px 15px;
+  }
+}
+
+.gallery-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.gallery-item {
+  margin: 0;
+  padding: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  aspect-ratio: 1;
+  transition: transform 0.2s ease;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-item:hover {
+  transform: scale(1.02);
+}
+
+/* ПОДВАЛ */
+footer {
+  background: linear-gradient(to right, var(--primary), var(--secondary), var(--primary));
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: auto;
+}
+
+/* АДАПТИВНОСТЬ */
+@media (max-width: 768px) {
+  .photo-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .photo-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .gallery-item {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+  
+  body {
+    padding: 0;
+  }
+  
+  main {
+    padding: 0.5rem;
+  }
+}
+
+/* Отключение hover-эффектов на тач-устройствах */
+@media (hover: none) {
+  .gallery-item:hover {
+    transform: none;
+  }
+}
+
+/* Дополнительные стили для select-галереи */
+.photo-selector {
+  width: 100%;
+  margin: 1rem 0;
+  display: none; /* Скрываем обычный select */
+}
+
+.visual-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.gallery-item {
+  margin: 0;
+  padding: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  aspect-ratio: 1;
+  transition: transform 0.2s ease;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-item:hover {
+  transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+  .visual-gallery {
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .visual-gallery {
+      grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 320px) {
+  .visual-gallery {
+      grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Мое портфолио, где вы можете узнать больше обо мне и моих работах">
+    <title>Fashion Saitik - Главная</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+    <header>
+        <h1>Fashion Saitik</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="biography.html">Моя биография</a></li>
+                <li><a href="gallery.html">Фотогалерея</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article class="gallery-container">
+            <h2>Фотогалерея</h2>
+            
+            <select id="photoSelector" class="photo-selector" multiple>
+                <option value="photo_2025-04-25_00-41-42.jpg">Фото 1</option>
+                <option value="photo_2025-04-25_00-51-19.jpg">Фото 2</option>
+                <option value="photo_2025-04-25_00-51-20 (2).jpg">Фото 3</option>
+                <option value="photo_2025-04-25_00-51-20 (3).jpg">Фото 4</option>
+                <option value="photo_2025-04-25_00-51-20 (4).jpg">Фото 5</option>
+                <option value="photo_2025-04-25_00-51-20.jpg">Фото 6</option>
+                <option value="photo_2025-04-25_21-39-36.jpg">Фото 7</option>
+                <option value="photo_2025-04-25_21-39-46.jpg">Фото 8</option>
+                <option value="photo_2025-04-25_21-39-53.jpg">Фото 9</option>
+            </select>
+            
+            <div class="visual-gallery" id="photoGallery">
+                <!-- Фото будут добавлены через JavaScript -->
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Fashion Saitik</p>
+    </footer>
+
+    <script>
+        // Создаем галерею на основе select
+        document.addEventListener('DOMContentLoaded', function() {
+            const photoSelector = document.getElementById('photoSelector');
+            const photoGallery = document.getElementById('photoGallery');
+            
+            // Создаем элементы галереи
+            Array.from(photoSelector.options).forEach(option => {
+                const figure = document.createElement('figure');
+                figure.className = 'gallery-item';
+                
+                const img = document.createElement('img');
+                img.src = option.value;
+                img.alt = option.text;
+                img.loading = 'lazy';
+                
+                const figcaption = document.createElement('figcaption');
+                
+                figure.appendChild(img);
+                figure.appendChild(figcaption);
+                photoGallery.appendChild(figure);
+            });
+            
+            // Добавляем обработчик для select (опционально)
+            photoSelector.addEventListener('change', function() {
+                alert('Выбрано фото: ' + this.options[this.selectedIndex].text);
+            });
+        });
+    </script>
+</body>
+</html>
